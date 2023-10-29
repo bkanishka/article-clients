@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .centered-div {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        /* Reset some default browser styles */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Center content vertically and horizontally */
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Set your desired background color */
+        }
+
+        h1 {
+            font-weight: 600; /* Adjust font weight as needed */
+            font-size: 2rem; /* Adjust font size as needed */
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Center links for navigation */
+        a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff; /* Set your desired link color */
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color:darkred; height:50px; padding-top:20px; text-alignment:center; ">
+      </nav>
+      <div class="centered-div">
+        <h1 style="color:darkred;">Articles</h1>
+    <ul>
+        <!-- Loop through articles from the database and display them -->
+        {% for article in articles %}
+            <li>
+                <h2 style="color:darkred;">{{ article.title }}</h2>
+                <p style="color:darkred;">Author: {{ article.author }}</p>
+                <p style="color:darkred;">DOI Link: <a href="{{ article.doi_link }}" class="btn btn-primary btn-lg active" style="background-color:darkred" role="button" aria-pressed="true">{{ article.doi_link }}</a>
+                  
+                <a href="{{ article.pdf_file.url }}" class="btn btn-primary btn-lg active" style="background-color:darkred" role="button" aria-pressed="true">Download PDF</a>
+                <a href="" target="_blank"></a>
+            </li>
+        {% endfor %}
+    </ul>
+    <button type="button" class="btn btn-primary btn-lg btn-block" style="color:white; background-color:darkred"><a href ="{% url 'admin-login' %}" style="text-decoration:none; color:white;">
+         admin-login</a></button>
+   
+
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>
